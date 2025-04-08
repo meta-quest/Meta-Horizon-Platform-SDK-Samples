@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name" description="Name for the application">HorizonBillingSample</string>
+    <string name="billing_unavailable" description="An error message if the billing service is unavailable">The Billing Service is unavailable</string>
+    <string name="billing_dev_error" description="An error message if Billing APIs were implemented incorrectly">The Billing APIs were incorrectly called</string>
+    <string name="billing_error" description="An error message if Billing APIs stopped due to an error">An error occurred when calling Billing APIs</string>
+    <string name="billing_unsupported_feature" description="An error message if an unsupported feature is called">Requested Billing feature isn\'t supported</string>
+    <string name="billing_item_owned" description="An error message if the requested item was previously purchased">Item is already owned by user</string>
+    <string name="billing_item_not_owned" description="An error message if the requested item isn't owned by the user">Item not owned by user</string>
+    <string name="billing_item_unavailable" description="An error message if the requested item isn't available">The requested item isn\'t available</string>
+    <string name="billing_network_error" description="An error message if a network error occurred">Billing request failed due to network error</string>
+    <string name="billing_service_disconnect" description="An error message if the Billing Service disconnected">The Billing Service disconnected</string>
+    <string name="billing_service_unavailable" description="An error message if the Billing Service is unavailable">The Billing Service is unavailable</string>
+    <string name="billing_user_cancel" description="An error message if the user cancelled the request">User cancelled purchase</string>
+</resources>
