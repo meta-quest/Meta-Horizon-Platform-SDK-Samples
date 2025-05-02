@@ -26,6 +26,6 @@ uses the Google Play Billing library to handle IAP within the app.
 ### Quest Folder
 
 Contains the `QuestAppPurchaseHandler`, which implements the `IBillingHandler` interface. This folder
-uses the Horizon Billing library to handle IAP within the app. To review the API reference for this library, please see [com.meta.horizon.billingclient.api](https://developers.meta.com/horizon/documentation/spatial-sdk/horizon-billing-compatibility/api-reference/1.0.0/root/com.meta.horizon.billingclient.api) for more details.
+uses the Horizon Billing library to handle IAP within the app. To review the API reference for this library, please see [com.meta.horizon.billingclient.api](https://developers.meta.com/horizon/reference/horizon-billing-compatibility/v1.0.0/root/com.meta.horizon.billingclient.api) for more details.
 
 *Note: When testing on Meta Quest, update the **QUEST_APP_ID** value within the `apikey.properties` file to match your Meta Horizon Store application.*
