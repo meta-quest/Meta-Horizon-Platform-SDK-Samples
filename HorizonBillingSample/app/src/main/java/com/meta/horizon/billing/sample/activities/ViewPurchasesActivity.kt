@@ -53,8 +53,8 @@ class ViewPurchasesActivity : AppCompatActivity() {
     val context = this.applicationContext
 
     runOnUiThread {
-      result.forEach {
-        val purchaseEntryView = ViewPurchasesEntry(context, it, ::onConsumeBtn)
+      result.forEach { purchaseEntry ->
+        val purchaseEntryView = ViewPurchasesEntry(context, purchaseEntry, ::onConsumeBtn)
         purchaseList.addView(purchaseEntryView)
       }
     }
