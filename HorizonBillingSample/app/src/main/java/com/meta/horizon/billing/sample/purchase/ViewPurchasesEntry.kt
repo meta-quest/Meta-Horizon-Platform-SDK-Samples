@@ -19,7 +19,7 @@ import com.meta.horizon.billing.sample.common.DateTimeHelper
 class ViewPurchasesEntry(
     context: Context,
     purchaseDetails: PurchaseEntryDetails,
-    onConsumeBtn: (purchaseToken: String) -> Unit
+    onConsumeBtn: (purchaseToken: String) -> Unit,
 ) : ConstraintLayout(context) {
   init {
     inflate(context, R.layout.view_purchases_entry, this)

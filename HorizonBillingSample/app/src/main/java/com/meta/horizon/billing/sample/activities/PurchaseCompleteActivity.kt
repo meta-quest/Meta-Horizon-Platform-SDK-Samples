@@ -20,7 +20,9 @@ class PurchaseCompleteActivity : AppCompatActivity() {
 
     val binding =
         DataBindingUtil.setContentView<ActivityPurchaseCompleteBinding>(
-            this, R.layout.activity_purchase_complete)
+            this,
+            R.layout.activity_purchase_complete,
+        )
     binding.activity = this
     binding.returnToMainBtn.setOnClickListener { navigateToMainScreen() }
     binding.itemName = this.intent.getStringExtra("itemName")

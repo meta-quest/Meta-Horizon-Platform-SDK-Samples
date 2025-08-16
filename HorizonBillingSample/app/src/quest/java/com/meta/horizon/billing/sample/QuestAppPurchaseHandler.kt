@@ -41,7 +41,7 @@ class QuestAppPurchaseHandler : IBillingHandler {
       activity: Activity,
       serviceReadyCallback: () -> Unit,
       successCallback: (itemName: String, quantity: String, orderDate: String) -> Unit,
-      failureCallback: (errorMsg: String) -> Unit
+      failureCallback: (errorMsg: String) -> Unit,
   ) {
     Log.d(TAG, "Entered initialize function for QuestAppPurchaseHandler")
     this.activity = activity
@@ -57,7 +57,8 @@ class QuestAppPurchaseHandler : IBillingHandler {
           successCallback(
               purchase.products[0],
               purchase.quantity.toString(),
-              DateTimeHelper.convertToTimestamp(purchase.purchaseTime))
+              DateTimeHelper.convertToTimestamp(purchase.purchaseTime),
+          )
         } else {
           when (billingResult.responseCode) {
             BillingClient.BillingResponseCode.ERROR -> {
@@ -142,7 +143,7 @@ class QuestAppPurchaseHandler : IBillingHandler {
       productId: String,
       productType: CoreProductType,
       successCallback: (result: List<Any>) -> Unit,
-      failureCallback: (errorMsg: String) -> Unit
+      failureCallback: (errorMsg: String) -> Unit,
   ) {
     Log.d(TAG, "Entered requestProductDetails function for QuestAppPurchaseHandler")
     val questProductType =
@@ -175,7 +176,7 @@ class QuestAppPurchaseHandler : IBillingHandler {
       context: Context,
       productType: CoreProductType,
       successCallback: (result: List<PurchaseEntryDetails>) -> Unit,
-      failureCallback: (errorMsg: String) -> Unit
+      failureCallback: (errorMsg: String) -> Unit,
   ) {
     Log.d(TAG, "Entered requestPurchases function for QuestAppPurchaseHandler")
     val questProductType =
@@ -195,7 +196,8 @@ class QuestAppPurchaseHandler : IBillingHandler {
                   purchase.quantity,
                   purchase.purchaseTime,
                   purchase.purchaseToken,
-                  purchase.products[0].contains("consume"))
+                  purchase.products[0].contains("consume"),
+              )
             }
         successCallback(result)
       }

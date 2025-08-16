@@ -12,5 +12,5 @@ data class PurchaseEntryDetails(
     val quantity: Int,
     val purchaseDate: Long,
     val purchaseToken: String,
-    val consumable: Boolean
+    val consumable: Boolean,
 )

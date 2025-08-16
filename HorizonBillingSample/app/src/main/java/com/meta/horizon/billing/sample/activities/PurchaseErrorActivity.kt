@@ -20,7 +20,9 @@ class PurchaseErrorActivity : AppCompatActivity() {
 
     val binding =
         DataBindingUtil.setContentView<ActivityPurchaseErrorBinding>(
-            this, R.layout.activity_purchase_error)
+            this,
+            R.layout.activity_purchase_error,
+        )
     binding.activity = this
     binding.returnToMainBtn.setOnClickListener { navigateToMainScreen() }
     binding.purchaseErrorTxt.text = this.intent.getStringExtra("errorMsg")

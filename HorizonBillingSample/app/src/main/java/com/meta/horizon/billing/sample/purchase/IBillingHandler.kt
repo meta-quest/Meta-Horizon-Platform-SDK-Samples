@@ -15,21 +15,21 @@ interface IBillingHandler {
       activity: Activity,
       serviceReadyCallback: () -> Unit,
       successCallback: (itemName: String, quantity: String, orderDate: String) -> Unit,
-      failureCallback: (errorMsg: String) -> Unit
+      failureCallback: (errorMsg: String) -> Unit,
   )
 
   fun requestProductDetails(
       productId: String,
       productType: CoreProductType,
       successCallback: (result: List<Any>) -> Unit,
-      failureCallback: (errorMsg: String) -> Unit
+      failureCallback: (errorMsg: String) -> Unit,
   )
 
   fun requestPurchases(
       context: Context,
       productType: CoreProductType,
       successCallback: (result: List<PurchaseEntryDetails>) -> Unit,
-      failureCallback: (errorMsg: String) -> Unit
+      failureCallback: (errorMsg: String) -> Unit,
   )
 
   fun launchBillingFlow(

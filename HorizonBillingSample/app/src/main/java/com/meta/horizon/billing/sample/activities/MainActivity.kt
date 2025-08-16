@@ -71,7 +71,8 @@ class MainActivity : AppCompatActivity() {
         "test_consume_free",
         CoreProductType.INAPP,
         ::onSuccessProductDetails,
-        ::onFailureProductDetails)
+        ::onFailureProductDetails,
+    )
   }
 
   private fun onPaidConsumeItemPurchase() {
@@ -80,7 +81,8 @@ class MainActivity : AppCompatActivity() {
         "test_consume_paid",
         CoreProductType.INAPP,
         ::onSuccessProductDetails,
-        ::onFailureProductDetails)
+        ::onFailureProductDetails,
+    )
   }
 
   private fun onFreeDurableItemPurchase() {
@@ -89,7 +91,8 @@ class MainActivity : AppCompatActivity() {
         "test_durable_free",
         CoreProductType.INAPP,
         ::onSuccessProductDetails,
-        ::onFailureProductDetails)
+        ::onFailureProductDetails,
+    )
   }
 
   private fun onPaidDurableItemPurchase() {
@@ -98,13 +101,18 @@ class MainActivity : AppCompatActivity() {
         "test_durable_paid",
         CoreProductType.INAPP,
         ::onSuccessProductDetails,
-        ::onFailureProductDetails)
+        ::onFailureProductDetails,
+    )
   }
 
   private fun onSubscriptionPurchase() {
     showLoadingScreen()
     billingHandler.requestProductDetails(
-        "test_sub_1", CoreProductType.SUBS, ::onSuccessProductDetails, ::onFailureProductDetails)
+        "test_sub_1",
+        CoreProductType.SUBS,
+        ::onSuccessProductDetails,
+        ::onFailureProductDetails,
+    )
   }
 
   private fun onServiceReady() {

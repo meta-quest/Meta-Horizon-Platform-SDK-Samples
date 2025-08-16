@@ -43,7 +43,7 @@ class MobileAppPurchaseHandler : IBillingHandler {
       activity: Activity,
       serviceReadyCallback: () -> Unit,
       successCallback: (itemName: String, quantity: String, orderDate: String) -> Unit,
-      failureCallback: (errorMsg: String) -> Unit
+      failureCallback: (errorMsg: String) -> Unit,
   ) {
     Log.d(TAG, "Entered initialize function for MobileAppPurchaseHandler")
     this.activity = activity
@@ -59,7 +59,8 @@ class MobileAppPurchaseHandler : IBillingHandler {
           successCallback(
               purchase.products[0],
               purchase.quantity.toString(),
-              DateTimeHelper.convertToTimestamp(purchase.purchaseTime))
+              DateTimeHelper.convertToTimestamp(purchase.purchaseTime),
+          )
         } else {
           when (billingResult.responseCode) {
             BillingClient.BillingResponseCode.ERROR -> {
@@ -147,7 +148,7 @@ class MobileAppPurchaseHandler : IBillingHandler {
       productId: String,
       productType: CoreProductType,
       successCallback: (result: List<Any>) -> Unit,
-      failureCallback: (errorMsg: String) -> Unit
+      failureCallback: (errorMsg: String) -> Unit,
   ) {
     Log.d(TAG, "Entered requestProductDetails function for MobileAppPurchaseHandler")
     val gmsProductType =
@@ -180,7 +181,7 @@ class MobileAppPurchaseHandler : IBillingHandler {
       context: Context,
       productType: CoreProductType,
       successCallback: (result: List<PurchaseEntryDetails>) -> Unit,
-      failureCallback: (errorMsg: String) -> Unit
+      failureCallback: (errorMsg: String) -> Unit,
   ) {
     Log.d(TAG, "Entered requestPurchases function for MobileAppPurchaseHandler")
     val gmsProductType =

@@ -35,7 +35,9 @@ class ViewPurchasesActivity : AppCompatActivity() {
 
     val binding =
         DataBindingUtil.setContentView<ActivityViewPurchasesBinding>(
-            this, R.layout.activity_view_purchases)
+            this,
+            R.layout.activity_view_purchases,
+        )
     binding.activity = this
     binding.returnBtn.setOnClickListener { navigateToMainScreen() }
   }
@@ -43,7 +45,11 @@ class ViewPurchasesActivity : AppCompatActivity() {
   private fun onServiceReady() {
     // showLoadingScreen()
     billingHandler.requestPurchases(
-        applicationContext, CoreProductType.INAPP, ::handleOnSuccess, ::handleOnFailure)
+        applicationContext,
+        CoreProductType.INAPP,
+        ::handleOnSuccess,
+        ::handleOnFailure,
+    )
   }
 
   private fun handleOnSuccess(result: List<PurchaseEntryDetails>) {
@@ -90,7 +96,11 @@ class ViewPurchasesActivity : AppCompatActivity() {
       purchaseList.removeAllViews()
     }
     billingHandler.requestPurchases(
-        applicationContext, CoreProductType.INAPP, ::handleOnSuccess, ::handleOnFailure)
+        applicationContext,
+        CoreProductType.INAPP,
+        ::handleOnSuccess,
+        ::handleOnFailure,
+    )
   }
 
   private fun showLoadingScreen() {

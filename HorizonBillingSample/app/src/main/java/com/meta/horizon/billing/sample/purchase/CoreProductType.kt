@@ -9,5 +9,5 @@ package com.meta.horizon.billing.sample.purchase
 
 enum class CoreProductType {
   INAPP,
-  SUBS
+  SUBS,
 }
