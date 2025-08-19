@@ -59,8 +59,10 @@ class MainActivity : AppCompatActivity() {
     binding.clientType.text = "Client: $clientTypeText"
 
     // Check if device and model configuration are correct
-    if ((Build.MODEL.contains("Quest") && clientTypeText == "Quest IAP") ||
-        (!Build.MODEL.contains("Quest") && clientTypeText == "GMS IAP")) {
+    if (
+        (Build.MODEL.contains("Quest") && clientTypeText == "Quest IAP") ||
+            (!Build.MODEL.contains("Quest") && clientTypeText == "GMS IAP")
+    ) {
       binding.correctClientIndicator.setImageResource(R.drawable.success_img)
     }
   }

@@ -47,8 +47,10 @@ class QuestAppPurchaseHandler : IBillingHandler {
     this.activity = activity
     val purchasesUpdatedListener = PurchasesUpdatedListener { billingResult, purchases ->
       run {
-        if (billingResult.responseCode == BillingClient.BillingResponseCode.OK &&
-            purchases.isNotEmpty()) {
+        if (
+            billingResult.responseCode == BillingClient.BillingResponseCode.OK &&
+                purchases.isNotEmpty()
+        ) {
           // Acknowledge each purchase that was made (not required on Quest)
           for (purchase in purchases) {
             acknowledgePurchase(purchase.purchaseToken)
@@ -75,7 +77,8 @@ class QuestAppPurchaseHandler : IBillingHandler {
 
             BillingClient.BillingResponseCode.FEATURE_NOT_SUPPORTED -> {
               failureCallback(
-                  activity.applicationContext.getString(R.string.billing_unsupported_feature))
+                  activity.applicationContext.getString(R.string.billing_unsupported_feature)
+              )
             }
 
             BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED -> {
@@ -84,12 +87,14 @@ class QuestAppPurchaseHandler : IBillingHandler {
 
             BillingClient.BillingResponseCode.ITEM_NOT_OWNED -> {
               failureCallback(
-                  activity.applicationContext.getString(R.string.billing_item_not_owned))
+                  activity.applicationContext.getString(R.string.billing_item_not_owned)
+              )
             }
 
             BillingClient.BillingResponseCode.ITEM_UNAVAILABLE -> {
               failureCallback(
-                  activity.applicationContext.getString(R.string.billing_item_unavailable))
+                  activity.applicationContext.getString(R.string.billing_item_unavailable)
+              )
             }
 
             BillingClient.BillingResponseCode.NETWORK_ERROR -> {
@@ -98,12 +103,14 @@ class QuestAppPurchaseHandler : IBillingHandler {
 
             BillingClient.BillingResponseCode.SERVICE_DISCONNECTED -> {
               failureCallback(
-                  activity.applicationContext.getString(R.string.billing_service_disconnect))
+                  activity.applicationContext.getString(R.string.billing_service_disconnect)
+              )
             }
 
             BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE -> {
               failureCallback(
-                  activity.applicationContext.getString(R.string.billing_service_unavailable))
+                  activity.applicationContext.getString(R.string.billing_service_unavailable)
+              )
             }
 
             BillingClient.BillingResponseCode.USER_CANCELED -> {
@@ -136,7 +143,8 @@ class QuestAppPurchaseHandler : IBillingHandler {
           override fun onBillingServiceDisconnected() {
             Log.d(TAG, "Quest IAP BillingClient disconnected!")
           }
-        })
+        }
+    )
   }
 
   override fun requestProductDetails(
@@ -156,7 +164,9 @@ class QuestAppPurchaseHandler : IBillingHandler {
                     QueryProductDetailsParams.Product.newBuilder()
                         .setProductId(productId)
                         .setProductType(questProductType)
-                        .build()))
+                        .build()
+                )
+            )
             .build()
 
     billingClient?.queryProductDetailsAsync(queryProductDetailsParams) {
@@ -221,7 +231,9 @@ class QuestAppPurchaseHandler : IBillingHandler {
         BillingFlowParams.newBuilder()
             .setProductDetailsParamsList(
                 ImmutableList.of<BillingFlowParams.ProductDetailsParams>(
-                    productDetailsBuilder.build()))
+                    productDetailsBuilder.build()
+                )
+            )
             .build()
     billingClient?.launchBillingFlow(activity, billingFlowParams)
   }

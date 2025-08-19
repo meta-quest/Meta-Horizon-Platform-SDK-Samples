@@ -49,8 +49,10 @@ class MobileAppPurchaseHandler : IBillingHandler {
     this.activity = activity
     val purchasesUpdatedListener = PurchasesUpdatedListener { billingResult, purchases ->
       run {
-        if (billingResult.responseCode == BillingClient.BillingResponseCode.OK &&
-            !purchases.isNullOrEmpty()) {
+        if (
+            billingResult.responseCode == BillingClient.BillingResponseCode.OK &&
+                !purchases.isNullOrEmpty()
+        ) {
           // Acknowledge each purchase that was made (not required on Quest)
           for (purchase in purchases) {
             acknowledgePurchase(purchase.purchaseToken)
@@ -77,7 +79,8 @@ class MobileAppPurchaseHandler : IBillingHandler {
 
             BillingClient.BillingResponseCode.FEATURE_NOT_SUPPORTED -> {
               failureCallback(
-                  activity.applicationContext.getString(R.string.billing_unsupported_feature))
+                  activity.applicationContext.getString(R.string.billing_unsupported_feature)
+              )
             }
 
             BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED -> {
@@ -86,12 +89,14 @@ class MobileAppPurchaseHandler : IBillingHandler {
 
             BillingClient.BillingResponseCode.ITEM_NOT_OWNED -> {
               failureCallback(
-                  activity.applicationContext.getString(R.string.billing_item_not_owned))
+                  activity.applicationContext.getString(R.string.billing_item_not_owned)
+              )
             }
 
             BillingClient.BillingResponseCode.ITEM_UNAVAILABLE -> {
               failureCallback(
-                  activity.applicationContext.getString(R.string.billing_item_unavailable))
+                  activity.applicationContext.getString(R.string.billing_item_unavailable)
+              )
             }
 
             BillingClient.BillingResponseCode.NETWORK_ERROR -> {
@@ -100,12 +105,14 @@ class MobileAppPurchaseHandler : IBillingHandler {
 
             BillingClient.BillingResponseCode.SERVICE_DISCONNECTED -> {
               failureCallback(
-                  activity.applicationContext.getString(R.string.billing_service_disconnect))
+                  activity.applicationContext.getString(R.string.billing_service_disconnect)
+              )
             }
 
             BillingClient.BillingResponseCode.SERVICE_UNAVAILABLE -> {
               failureCallback(
-                  activity.applicationContext.getString(R.string.billing_service_unavailable))
+                  activity.applicationContext.getString(R.string.billing_service_unavailable)
+              )
             }
 
             BillingClient.BillingResponseCode.USER_CANCELED -> {
@@ -141,7 +148,8 @@ class MobileAppPurchaseHandler : IBillingHandler {
           override fun onBillingServiceDisconnected() {
             Log.d(TAG, "GMS BillingClient disconnected!")
           }
-        })
+        }
+    )
   }
 
   override fun requestProductDetails(
@@ -161,7 +169,9 @@ class MobileAppPurchaseHandler : IBillingHandler {
                     QueryProductDetailsParams.Product.newBuilder()
                         .setProductId(productId)
                         .setProductType(gmsProductType)
-                        .build()))
+                        .build()
+                )
+            )
             .build()
 
     billingClient?.queryProductDetailsAsync(queryProductDetailsParams) {
@@ -228,7 +238,8 @@ class MobileAppPurchaseHandler : IBillingHandler {
     val billingFlowParams =
         BillingFlowParams.newBuilder()
             .setProductDetailsParamsList(
-                ImmutableList.of<ProductDetailsParams>(productDetailsBuilder.build()))
+                ImmutableList.of<ProductDetailsParams>(productDetailsBuilder.build())
+            )
             .build()
 
     billingClient?.launchBillingFlow(activity, billingFlowParams)
